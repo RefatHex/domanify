@@ -1,0 +1,14 @@
+links text sizes for mobile version
+Define a new srction for links in style sheet 
+color to color accemt
+text transform to uppercase
+for all anchor text decoration is none
+font size = 2rem 
+font wheight bold
+
+using after psudo selectior and add content for hyphen 
+add some margin and effect using hover using after 
+
+
+for window version use media quary for 1024px
+font = 1.5rem
