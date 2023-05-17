@@ -12,3 +12,7 @@ add some margin and effect using hover using after
 
 for window version use media quary for 1024px
 font = 1.5rem
+
+
+
+badges
