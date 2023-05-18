@@ -1,34 +1,53 @@
+@import "./normalize.css";
 :root {
-  --color-primmary: #2584ff;
+  --color-primary: #2584ff;
   --color-secondary: #00d9ff;
   --color-accent: #ff3400;
-  --color-heading: #1b0760;
+  --color-headings: #1b0760;
   --color-body: #918ca4;
+  --color-body-darker: #5c5577;
   --color-border: #ccc;
+  --border-radius: 30px;
 }
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
+
 /* Typography */
+
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
 html {
   font-size: 62.5%;
 }
+
+img {
+  width: 100%;
+}
+
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  line-height: 1.5;
   color: var(--color-body);
 }
 
 h1,
 h2,
 h3 {
-  color: var(--color-heading);
+  color: var(--color-headings);
   margin-bottom: 1rem;
+  line-height: 1.1;
 }
 
 h1 {
-  font-size: 7rem;
+  font-size: 6rem;
 }
 
 h2 {
@@ -36,8 +55,11 @@ h2 {
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
+
 p {
   margin-top: 0;
 }
@@ -58,18 +80,22 @@ p {
 }
 
 /* Links */
+
 a {
   text-decoration: none;
 }
+
 .link-arrow {
   color: var(--color-accent);
   text-transform: uppercase;
   font-size: 2rem;
   font-weight: bold;
 }
+
 .link-arrow::after {
   content: "-->";
   margin-left: 5px;
+  transition: margin 0.15s;
 }
 
 .link-arrow:hover::after {
@@ -82,27 +108,29 @@ a {
   }
 }
 
-/*Badges */
+/* Badges */
+
 .badge {
   border-radius: 20px;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 600;
   padding: 0.5rem 2rem;
   white-space: nowrap;
 }
 
 .badge--primary {
-  background: var(--color-primmary);
+  background: var(--color-primary);
   color: #fff;
 }
 
 .badge--secondary {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: #fff;
 }
 
 .badge--small {
   font-size: 1.6rem;
+  padding: 0.5rem 1.5rem;
 }
 
 @media screen and (min-width: 1024px) {
@@ -114,12 +142,11 @@ a {
   }
 }
 
-/* List */
+/* Lists */
 
 .list {
   list-style: none;
   padding-left: 0;
-  color: var(--color-heading);
 }
 
 .list--inline .list__item {
@@ -130,6 +157,7 @@ a {
 .list--tick {
   list-style-image: url(../images/tick.svg);
   padding-left: 3rem;
+  color: var(--color-headings);
 }
 
 .list--tick .list__item {
@@ -142,19 +170,29 @@ a {
     padding-left: 0;
   }
 }
-/* 
-icons */
+
+/* Icons */
+
 .icon {
   width: 40px;
   height: 40px;
 }
 
+.icon--small {
+  width: 30px;
+  height: 30px;
+}
+
 .icon--primary {
-  fill: var(--color-primmary);
+  fill: var(--color-primary);
+}
+
+.icon--white {
+  fill: #fff;
 }
 
 .icon-container {
-  background-color: #f3f9fa;
+  background: #f3f9fa;
   width: 64px;
   height: 64px;
   border-radius: 100%;
@@ -162,7 +200,12 @@ icons */
   justify-content: center;
   align-items: center;
 }
-/* Button */
+
+.icon-container--accent {
+  background: var(--color-accent);
+}
+
+/* Buttons */
 
 .btn {
   border-radius: 40px;
@@ -171,36 +214,61 @@ icons */
   font-size: 1.8rem;
   font-weight: 600;
   margin: 1rem 0;
-  padding: 2rem 3rem;
+  outline: 0;
+  padding: 2rem 4vw;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
+.btn .icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
 .btn--primary {
-  background: var(--color-primmary);
-  color: white;
+  background: var(--color-primary);
+  color: #fff;
 }
 
 .btn--primary:hover {
-  background: #3af88b;
+  background: #3a8ffd;
 }
 
 .btn--secondary {
   background: var(--color-secondary);
-  color: white;
+  color: #fff;
 }
 
 .btn--secondary:hover {
-  background: #00c8eb;
+  background: #05cdf0;
 }
 
 .btn--accent {
-  background-color: var(--color-accent);
-  color: white;
+  background: var(--color-accent);
+  color: #fff;
 }
+
 .btn--accent:hover {
-  background-color: #ec3000;
+  background: #ec3000;
+}
+
+.btn--outline {
+  background: #fff;
+  color: var(--color-headings);
+  border: 2px solid var(--color-headings);
+}
+
+.btn--outline:hover {
+  background: var(--color-headings);
+  color: #fff;
+}
+
+.btn--stretched {
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 
 .btn--block {
@@ -208,28 +276,18 @@ icons */
   display: inline-block;
 }
 
-.btn--outline {
-  background: #fff;
-  color: var(--color-heading);
-  border: 2px solid var(--color-heading);
-}
-
-.btn--outline:hover {
-  background: var(--color-heading);
-  color: #fff;
-}
-
-@media screen and (man-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .btn {
     font-size: 1.5rem;
   }
 }
 
-/* input */
+/* Inputs */
+
 .input {
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--color-border);
-  color: var(--color-heading);
+  color: var(--color-headings);
   font-size: 2rem;
   outline: 0;
   padding: 1.5rem 3.5rem;
@@ -241,14 +299,15 @@ icons */
 
 .input-group {
   border: 1px solid var(--color-border);
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   display: flex;
 }
 
 .input-group .input {
   border: 0;
   flex-grow: 1;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 2rem;
+  width: 0;
 }
 
 .input-group .btn {
@@ -261,7 +320,7 @@ icons */
   }
 }
 
-/* cards */
+/* Cards */
 
 .card {
   border-radius: 7px;
@@ -271,14 +330,76 @@ icons */
 
 .card__header,
 .card__body {
-  padding: 2rem 3rem;
+  padding: 2rem 7%;
 }
 
 .card--primary .card__header {
-  background-color: var(--color-primmary);
+  background: var(--color-primary);
   color: #fff;
 }
+
 .card--secondary .card__header {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   color: #fff;
+}
+
+.card--primary .badge--primary {
+  background: #126de4;
+}
+
+.card--secondary .badge--secondary {
+  background: #02cdf1;
+}
+
+/* Plans */
+
+.plan__name {
+  color: #fff;
+  margin: 0;
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+
+.plan__price {
+  font-size: 6rem;
+}
+
+.plan__billing {
+  font-size: 2.4rem;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-right: 1rem;
+}
+
+.plan__description {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  display: block;
+}
+
+.plan .list-item {
+  margin-bottom: 2rem;
+}
+.plan--popular .card__header {
+  position: relative;
+}
+.plan--popular .card__header::before {
+  content: url(../images/popular.svg);
+  width: 40px;
+  display: inline-block;
+  position: absolute;
+  top: -6px;
+  right: 6%;
+}
+@media screen and (min-width: 1024px) {
+  .plan__name {
+    font-size: 1.4rem;
+  }
+  .plan__price {
+    font-size: 5rem;
+  }
+  .plan__description {
+    font-size: 1.7rem;
+  }
 }
